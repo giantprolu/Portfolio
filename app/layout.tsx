@@ -7,8 +7,8 @@ import Sidebar from '@/components/sidebar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'John Doe - Portfolio',
-  description: 'Full-stack developer and designer',
+  title: 'Chavaudra Nathan - Portfolio',
+  description: 'Developpeur Full-stack',
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -27,7 +27,7 @@ export default function RootLayout({
         >
           <div className="flex min-h-screen">
             <Sidebar />
-            <main className="flex-1 p-8 md:p-12 overflow-auto">
+            <main className="flex-1 ml-[280px] p-8 md:p-12 overflow-auto">
               {children}
             </main>
           </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
+import { useForm as useReactHookForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {
@@ -16,17 +16,18 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { useForm as useFormspree, ValidationError } from '@formspree/react';
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  name: z.string().min(2, 'Votre nom doit contenir au moins 2 caractères'),
+  email: z.string().email('Adresse email invalide'),
+  message: z.string().min(10, 'Le message doit contenir au moins 10 caractères'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function Contact() {
-  const form = useForm<FormValues>({
+  const form = useReactHookForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -35,11 +36,14 @@ export default function Contact() {
     },
   });
 
+  const [state, handleSubmit] = useFormspree("xpwpaaog");
+
   function onSubmit(data: FormValues) {
-    // Here you would typically send the data to your backend
-    console.log(data);
-    toast.success('Message sent successfully!');
-    form.reset();
+    handleSubmit(data);
+    if (state.succeeded) {
+      toast.success('Message envoyé avec succès !');
+      form.reset();
+    }
   }
 
   return (
@@ -49,9 +53,9 @@ export default function Contact() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-4">Get in Touch</h1>
+        <h1 className="text-4xl font-bold mb-4">Contactez moi</h1>
         <p className="text-muted-foreground mb-8">
-          Have a question or want to work together? Feel free to reach out.
+          Vous avez une question ou un projet en tête ? N'hésitez pas à me contacter !
         </p>
 
         <Form {...form}>
@@ -61,9 +65,9 @@ export default function Contact() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nom</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your name" {...field} />
+                    <Input placeholder="Votre Nom" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -77,8 +81,13 @@ export default function Contact() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="your@email.com" {...field} />
+                    <Input placeholder="votre@email.com" {...field} />
                   </FormControl>
+                  <ValidationError 
+                    prefix="Email" 
+                    field="email"
+                    errors={state.errors}
+                  />
                   <FormMessage />
                 </FormItem>
               )}
@@ -92,18 +101,23 @@ export default function Contact() {
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Your message"
+                      placeholder="Votre message"
                       className="min-h-[150px]"
                       {...field}
                     />
                   </FormControl>
+                  <ValidationError 
+                    prefix="Message" 
+                    field="message"
+                    errors={state.errors}
+                  />
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <Button type="submit" className="w-full">
-              Send Message
+            <Button type="submit" className="w-full" disabled={state.submitting}>
+              Envoyer le message
             </Button>
           </form>
         </Form>

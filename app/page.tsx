@@ -13,7 +13,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="text-4xl md:text-6xl font-bold mb-6"
         >
-          Hi, I'm John Doe
+          Bienvenue sur le portfolio de <br/> Nathan Chavaudra
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -21,9 +21,11 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl md:text-2xl text-muted-foreground"
         >
-          A full-stack developer and designer crafting beautiful digital
-          experiences. I specialize in building modern web applications with a
-          focus on user experience and performance.
+          Développeur Full-Stack et designer passionné, 
+          je conçois des expériences numériques modernes et intuitives. 
+          Spécialisé dans le développement d’applications web performantes, 
+          je mets un point d’honneur à optimiser l’expérience utilisateur et 
+          les performances techniques.
         </motion.p>
       </div>
     </div>

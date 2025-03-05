@@ -9,16 +9,18 @@ import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { ModeToggle } from './mode-toggle';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Work', href: '/work' },
-  { name: 'About', href: '/about' },
+  { name: 'Accueil', href: '/' },
+  { name: 'Travaux', href: '/work' },
+  { name: 'A propos', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
-
+const handleEmailClick = () => {
+  window.location.href = 'mailto:nathnathchav@gmail.com';
+};
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
-  { name: 'Email', href: 'mailto:hello@example.com', icon: Mail },
+  { name: 'GitHub', href: 'https://github.com/giantprolu', icon: Github },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/nathan-chavaudra/', icon: Linkedin },
+  { name: 'Email', href: '#', icon: Mail, onClick: handleEmailClick },
 ];
 
 export default function Sidebar() {
@@ -39,15 +41,15 @@ export default function Sidebar() {
 
       <aside
         className={cn(
-          'fixed lg:relative w-[280px] h-screen bg-background border-r transition-transform duration-300 ease-in-out z-40',
+          'fixed top-0 left-0 w-[280px] h-full bg-background border-r z-40',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex-1">
             <Link href="/" className="block mb-12">
-              <h1 className="text-2xl font-bold">John Doe</h1>
-              <p className="text-muted-foreground">Developer & Designer</p>
+              <h1 className="text-2xl font-bold">Nathan Chavaudra</h1>
+              <p className="text-muted-foreground">Développeur Full-Stack</p>
             </Link>
 
             <nav className="space-y-4">

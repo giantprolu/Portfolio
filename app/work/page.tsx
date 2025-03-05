@@ -6,29 +6,29 @@ import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'Project One',
-    description: 'A modern e-commerce platform built with Next.js and Supabase',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
-    tags: ['Next.js', 'Supabase', 'Tailwind CSS'],
-    link: 'https://example.com',
-    github: 'https://github.com',
+    title: 'Project Ostéopathe',
+    description: 'Une site vitrine moderne pour un cabinet d\'ostéopathie',
+    image: '/osteo.webp',
+    tags: ['React', 'Maps API', 'Tailwind CSS'],
+    link: 'https://philipot-osteo-aigondigne-niort.fr',
+    github: 'https://github.com/giantprolu/SiteOsteo',
   },
   {
-    title: 'Project Two',
-    description: 'Real-time collaboration tool for remote teams',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2372&auto=format&fit=crop',
-    tags: ['React', 'WebSocket', 'TypeScript'],
-    link: 'https://example.com',
-    github: 'https://github.com',
+    title: 'Project Dératisateur',
+    description: 'Un vitrine pour un dératisateur professionnel',
+    image: '/derat.webp',
+    tags: ['React', 'Formspree', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://site-deratisation.vercel.app',
+    github: 'https://github.com/giantprolu/Site_deratisation',
   },
-  {
-    title: 'Project Three',
-    description: 'AI-powered content management system',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2370&auto=format&fit=crop',
-    tags: ['Python', 'TensorFlow', 'React'],
-    link: 'https://example.com',
-    github: 'https://github.com',
-  },
+  // {
+  //   title: 'Project Three',
+  //   description: 'AI-powered content management system',
+  //   image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2370&auto=format&fit=crop',
+  //   tags: ['Python', 'TensorFlow', 'React'],
+  //   link: 'https://example.com',
+  //   github: 'https://github.com',
+  // },
 ];
 
 const container = {
@@ -54,7 +54,7 @@ export default function Work() {
         animate={{ opacity: 1, y: 0 }}
         className="text-4xl font-bold mb-8"
       >
-        Selected Work
+        Mes travaux
       </motion.h1>
 
       <motion.div
