@@ -13,6 +13,8 @@ const navigation = [
   { name: 'Travaux', href: '/work' },
   { name: 'A propos', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Stage', href: '/stage' },
+  { name: 'Veille', href: '/veille' },
 ];
 const handleEmailClick = () => {
   window.location.href = 'mailto:nathnathchav@gmail.com';

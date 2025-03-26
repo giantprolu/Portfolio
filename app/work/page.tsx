@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'Project Ostéopathe',
+    title: 'Site Ostéopathe',
     description: 'Une site vitrine moderne pour un cabinet d\'ostéopathie',
     image: '/osteo.webp',
     tags: ['React', 'Maps API', 'Tailwind CSS'],
@@ -14,61 +14,44 @@ const projects = [
     github: 'https://github.com/giantprolu/SiteOsteo',
   },
   {
-    title: 'Project Dératisateur',
-    description: 'Un vitrine pour un dératisateur professionnel',
+    title: 'G&K Hygiène 3D',
+    description: 'Un site vitrine pour un dératisateur professionnel à Niort',
+    image: '/logo.webp',
+    tags: ['React', 'Formspree', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://gk-hygiene-3d.fr',
+    github: 'https://github.com/giantprolu/Site-deratisation-greg',
+  },
+  {
+    title: 'Hygiène Protect 3D',
+    description: 'Un site vitrine pour un dératisateur professionnel à Paris',
     image: '/derat.webp',
     tags: ['React', 'Formspree', 'TypeScript', 'Tailwind CSS'],
     link: 'https://site-deratisation.vercel.app',
     github: 'https://github.com/giantprolu/Site_deratisation',
-  },
+  }
   // {
   //   title: 'Project Three',
-  //   description: 'AI-powered content management system',
-  //   image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2370&auto=format&fit=crop',
-  //   tags: ['Python', 'TensorFlow', 'React'],
-  //   link: 'https://example.com',
-  //   github: 'https://github.com',
+  //   description: 'Description of Project Three',
+  //   image: '/project-three.webp',
+  //   tags: ['Tag1', 'Tag2', 'Tag3'],
+  //   link: 'https://project-three.com',
+  //   github: 'https://github.com/username/project-three',
   // },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
-
 export default function Work() {
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    setCurrentTime(new Date().toLocaleTimeString());
+  }, []);
+
   return (
     <div className="py-12">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-4xl font-bold mb-8"
-      >
-        Mes travaux
-      </motion.h1>
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-      >
+      <h1 className="text-4xl font-bold mb-8">Mes travaux</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project) => (
-          <motion.div
-            key={project.title}
-            variants={item}
-            className="group relative bg-card rounded-lg overflow-hidden"
-          >
+          <div key={project.title} className="group relative bg-card rounded-lg overflow-hidden">
             <div className="aspect-video overflow-hidden">
               <img
                 src={project.image}
@@ -81,10 +64,7 @@ export default function Work() {
               <p className="text-muted-foreground mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
-                  >
+                  <span key={tag} className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
                     {tag}
                   </span>
                 ))}
@@ -104,9 +84,9 @@ export default function Work() {
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

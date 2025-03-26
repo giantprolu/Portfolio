@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useForm as useReactHookForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -48,11 +47,7 @@ export default function Contact() {
 
   return (
     <div className="py-12 max-w-2xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div>
         <h1 className="text-4xl font-bold mb-4">Contactez moi</h1>
         <p className="text-muted-foreground mb-8">
           Vous avez une question ou un projet en tête ? N'hésitez pas à me contacter !
@@ -121,7 +116,7 @@ export default function Contact() {
             </Button>
           </form>
         </Form>
-      </motion.div>
+      </div>
     </div>
   );
 }
