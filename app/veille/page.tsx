@@ -12,11 +12,28 @@ export default function Veille() {
   useEffect(() => {
     const fetchFeeds = async () => {
       try {
+        // Vérifier d'abord le stockage local
+        const cachedData = localStorage.getItem('rssFeeds');
+        const cachedTime = localStorage.getItem('rssFeedsTimestamp');
+        
+        // Si des données existent et sont récentes (moins de 1 heure)
+        if (cachedData && cachedTime && 
+            (Date.now() - parseInt(cachedTime)) < 3600000) {
+          setFeeds(JSON.parse(cachedData));
+          setLoading(false);
+          return;
+        }
+        
+        // Sinon faire une nouvelle requête
         const response = await fetch("/api/rss");
         if (!response.ok) throw new Error("Erreur de récupération des flux");
         
         const data = await response.json();
         setFeeds(data);
+        
+        // Sauvegarder dans le stockage local
+        localStorage.setItem('rssFeeds', JSON.stringify(data));
+        localStorage.setItem('rssFeedsTimestamp', Date.now().toString());
       } catch (error) {
         console.error("Erreur lors du chargement des flux RSS :", error);
       } finally {
