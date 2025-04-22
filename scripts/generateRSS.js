@@ -13,7 +13,7 @@ async function fetchArticles() {
   const feed = new RSS({
     title: 'Vercel Blog (Custom RSS)',
     description: 'Flux généré automatiquement depuis le blog Vercel',
-    feed_url: 'https://TON-SITE/rss.xml', // Remplace par ton URL
+    feed_url: 'https://portfolio-three-khaki-87.vercel.app/rss.xml', // Remplace par ton URL
     site_url: BLOG_URL,
     language: 'en',
   });
