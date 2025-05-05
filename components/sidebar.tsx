@@ -24,7 +24,7 @@ const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/nathan-chavaudra/', icon: Linkedin },
   { name: 'Email', href: 'https://portfolio-three-khaki-87.vercel.app/contact', icon: Mail, onClick: handleEmailClick },
 ];
-
+ 
 export default function Sidebar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
