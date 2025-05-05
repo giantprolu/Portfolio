@@ -22,7 +22,7 @@ const handleEmailClick = () => {
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/giantprolu', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/nathan-chavaudra/', icon: Linkedin },
-  { name: 'Email', href: '#', icon: Mail, onClick: handleEmailClick },
+  { name: 'Email', href: 'https://portfolio-three-khaki-87.vercel.app/contact', icon: Mail, onClick: handleEmailClick },
 ];
 
 export default function Sidebar() {
