@@ -1,4 +1,6 @@
+
 'use client';
+import React from 'react';
 
 import { useForm as useReactHookForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { useForm as useFormspree, ValidationError } from '@formspree/react';
+// import { useForm as useFormspree, ValidationError } from '@formspree/react';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Votre nom doit contenir au moins 2 caractères'),
@@ -35,13 +37,38 @@ export default function Contact() {
     },
   });
 
-  const [state, handleSubmit] = useFormspree("xpwpaaog");
 
-  function onSubmit(data: FormValues) {
-    handleSubmit(data);
-    if (state.succeeded) {
-      toast.success('Message envoyé avec succès !');
-      form.reset();
+  const [submitting, setSubmitting] = React.useState(false);
+  const [succeeded, setSucceeded] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+
+
+  async function onSubmit(data: FormValues) {
+    setSubmitting(true);
+    setError(null);
+    setSucceeded(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        setSucceeded(true);
+        toast.success('Message envoyé avec succès !');
+        form.reset();
+      } else {
+        const res = await response.json();
+        setError(res.error || 'Erreur lors de l\'envoi du message.');
+        toast.error(res.error || 'Erreur lors de l\'envoi du message.');
+      }
+    } catch (e) {
+      setError('Erreur lors de l\'envoi du message.');
+      toast.error('Erreur lors de l\'envoi du message.');
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -78,11 +105,11 @@ export default function Contact() {
                   <FormControl>
                     <Input placeholder="votre@email.com" {...field} />
                   </FormControl>
-                  <ValidationError 
+                  {/* <ValidationError 
                     prefix="Email" 
                     field="email"
                     errors={state.errors}
-                  />
+                  /> */}
                   <FormMessage />
                 </FormItem>
               )}
@@ -101,19 +128,25 @@ export default function Contact() {
                       {...field}
                     />
                   </FormControl>
-                  <ValidationError 
+                  {/* <ValidationError 
                     prefix="Message" 
                     field="message"
                     errors={state.errors}
-                  />
+                  /> */}
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <Button type="submit" className="w-full" disabled={state.submitting}>
-              Envoyer le message
+            <Button type="submit" className="w-full" disabled={submitting}>
+              {submitting ? 'Envoi en cours...' : 'Envoyer le message'}
             </Button>
+            {error && (
+              <div className="text-red-500 text-sm mt-2">{error}</div>
+            )}
+            {succeeded && (
+              <div className="text-green-600 text-sm mt-2">Message envoyé avec succès !</div>
+            )}
           </form>
         </Form>
       </div>

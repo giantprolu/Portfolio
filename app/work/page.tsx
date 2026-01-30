@@ -26,7 +26,15 @@ const projects = [
     description: 'Un site vitrine pour un dératisateur professionnel à Paris',
     image: '/derat.webp',
     tags: ['React', 'Formspree', 'TypeScript', 'Tailwind CSS'],
-    link: 'https://site-deratisation.vercel.app',
+    link: 'https://www.hygiene-protect-3d.fr',
+    github: 'https://github.com/giantprolu/Site_deratisation',
+  },
+  {
+    title: 'Money Flow',
+    description: 'Une App PWA de gestion de budget personnel avec analyses graphiques',
+    image: '/derat.webp',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://www.gestion-de-compte.trouve-tout-conseil.fr',
     github: 'https://github.com/giantprolu/Site_deratisation',
   }
   // {

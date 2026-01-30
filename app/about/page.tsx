@@ -3,9 +3,9 @@
 import { Button } from '@/components/ui/button';
 import { FileDown } from 'lucide-react';
 const skills = [
-  { category: 'Frontend', items: ['React', 'Angular', 'TypeScript', 'Tailwind CSS'] },
-  { category: 'Backend', items: ['Node.js', 'Python', 'SQLServer', 'C#'] },
-  { category: 'Tools', items: ['Git', 'Docker', 'Azure', 'Figma'] },
+  { category: 'Frontend', items: ['Next.js', 'Angular', 'TypeScript', 'Tailwind CSS'] },
+  { category: 'Backend', items: ['Next.js', 'SQLServer', 'C#'] },
+  { category: 'Tools', items: ['Git', 'Azure', 'Figma', 'Visual Studio'] },
 ];
 
 export default function About() {
