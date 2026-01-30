@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     },
     body: JSON.stringify({
       from: 'contact@votre-domaine.com',
-      to: 'votre.email@domaine.com',
+      to: 'nathnathchav@gmail.com',
       subject: `Nouveau message de ${name}`,
       html: `<p><b>Nom:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Message:</b> ${message}</p>`
     })
