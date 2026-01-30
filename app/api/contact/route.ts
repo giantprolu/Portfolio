@@ -63,6 +63,7 @@ const htmlTemplate = (data: { name: string; email: string; message: string }) =>
   }
   .cta-btn {
     display: inline-block;
+    href: #fff;
     background: #405de6;
     color: #fff;
     padding: 10px 15px;
@@ -105,7 +106,7 @@ const htmlTemplate = (data: { name: string; email: string; message: string }) =>
       <p>
         📌 <strong>Envoyé depuis :</strong> Page Contact du portfolio
       </p>
-      <a class="cta-btn" href="mailto:${data.email}">Voir le message</a>
+      <a class="cta-btn" href="mailto:${data.email}">Répondre</a>
     </div>
     <div class="footer">
       Portfolio — © ${new Date().getFullYear()} • Conçu avec ❤️
