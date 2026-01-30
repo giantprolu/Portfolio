@@ -32,7 +32,7 @@ const projects = [
   {
     title: 'Money Flow',
     description: 'Une App PWA de gestion de budget personnel avec analyses graphiques',
-    image: '/derat.webp',
+    image: '/Money.webp',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     link: 'https://www.gestion-de-compte.trouve-tout-conseil.fr',
     github: 'https://github.com/giantprolu/Site_deratisation',
